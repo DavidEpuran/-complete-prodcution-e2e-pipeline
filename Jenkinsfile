@@ -56,14 +56,14 @@ pipeline{
 
         // }
 
-        stage("Quality Gate") {
-            steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
-                }
-            }
+        // stage("Quality Gate") {
+        //     steps {
+        //         script {
+        //             waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
+        //         }
+        //     }
 
-        }
+        // }
 
         stage("Build & Push Docker Image") {
             steps {
@@ -90,14 +90,14 @@ pipeline{
 
     //     }
 
-    //     stage ('Cleanup Artifacts') {
-    //         steps {
-    //             script {
-    //                 sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
-    //                 sh "docker rmi ${IMAGE_NAME}:latest"
-    //             }
-    //         }
-    //     }
+        stage ('Cleanup Artifacts') {
+            steps {
+                script {
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
+        }
 
 
         stage("Trigger CD Pipeline") {
