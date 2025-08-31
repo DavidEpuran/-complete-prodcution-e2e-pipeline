@@ -81,14 +81,7 @@ pipeline{
 
         }
 
-    //     stage("Trivy Scan") {
-    //         steps {
-    //             script {
-		  //  sh ('docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image dmancloud/complete-prodcution-e2e-pipeline:1.0.0-22 --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
-    //             }
-    //         }
 
-    //     }
 
         stage ('Cleanup Artifacts') {
             steps {
@@ -109,18 +102,6 @@ pipeline{
 
         }
 
-    }
-
-//     post {
-//         failure {
-//             emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
-//                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed", 
-//                     mimeType: 'text/html',to: "dmistry@yourhostdirect.com"
-//             }
-//          success {
-//                emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
-//                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful", 
-//                     mimeType: 'text/html',to: "dmistry@yourhostdirect.com"
-//           }      
+    }    
     
 }
